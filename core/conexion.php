@@ -59,6 +59,6 @@ class Conexion extends mysqli{
   }
 
 }
-//juan carlos capitano chavarria
+
 
  ?>
