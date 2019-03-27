@@ -1,0 +1,69 @@
+<?php 
+
+header('Content-Type: application/json');
+$pdo = new PDO("mysql:dbname=calendario;charset=UTF8;host=127.0.0.1","root","");
+$accion = (isset($_GET['accion']))?$_GET['accion']:'leer';
+
+switch ($accion) {
+	case 'agregar':
+		# code...
+	$sentenciaSQL = $pdo->prepare("INSERT INTO eventos(title,description,color,textColor,start,end,modalidad)
+		VALUES(:title,:description,:color,:textColor,:start,:end,:modalidad)");
+	$respuesta = $sentenciaSQL->execute(array(
+		"title" => $_POST['title'],
+		"description" =>$_POST['description'],
+		"color" => $_POST['color'],
+		"textColor" => $_POST['textColor'],
+		"start" =>$_POST['start'],
+		"end" => $_POST['end'],
+		"modalidad"=> $_POST['modalidad']
+	));
+	echo json_encode($respuesta);
+
+		break;
+	case 'modificar':
+	$sentenciaSQL = $pdo->prepare("UPDATE eventos SET 
+			title =:title,
+			description=:description,
+			color=:color,
+			textColor=:textColor,
+			start=:start,
+			end =:end,
+			modalidad=:modalidad
+			WHERE ID=:ID
+
+		");
+		$respuesta = $sentenciaSQL->execute(array(
+		"ID" =>$_POST['id'],
+		"title" => $_POST['title'],
+		"description" =>$_POST['description'],
+		"color" => $_POST['color'],
+		"textColor" => $_POST['textColor'],
+		"start" =>$_POST['start'],
+		"end" => $_POST['end'],
+		"modalidad"=> $_POST['modalidad']
+	));
+		echo json_encode($respuesta);
+		break;
+
+	case 'eliminar':
+
+		$respt = false;
+		if (isset($_POST['id'])) {
+			$sentenciaSQL = $pdo->prepare("DELETE FROM eventos WHERE ID=:ID");
+			$respt = $sentenciaSQL->execute(array("ID"=>$_POST['id']));
+		}
+			echo json_encode($respt);
+
+		break;
+	
+	default:
+		$sentenciaSQL = $pdo->prepare("SELECT * FROM eventos");
+		$sentenciaSQL->execute();
+		$resultado = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
+		echo json_encode($resultado);
+		break;
+}
+
+
+ ?>
