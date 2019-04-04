@@ -1,6 +1,10 @@
+a{
+	text-decoration: none !important;
+}
 .colores{
 	display: block;
 	margin-top: 10px;
+
 }
 .cpresencial{
 	background-color:#1d5ee9;
@@ -21,6 +25,24 @@
 	float: right;
 }
 
-.colores{
 
+.fc-sat, .fc-sun{
+	background-color: #dcfcda;
+}
+.mifooter{
+	text-align: center;
+	text-decoration: none;
+	width:100%;
+	margin-top: 20px;
+}
+.mifooter a{
+	color:#3b3e59 !important;
+}
+
+.mifooter span{
+	color: #0b0e30;
+	font-size: 20px;
+}
+.mifooter .icon-heart{
+	font-size: 14px;
 }

@@ -3,12 +3,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Inicio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script></script>
+	<link rel="stylesheet" href="css/estilos.css">
 	<link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/menu-style.css">
-	<link rel="stylesheet" href="css/estilos.css">
+
+	<link rel="stylesheet" href="icon/style.css">
 	<script src="js/jquery.min.js"></script>
 	
 	<script src="js/menu-js.js"></script>
@@ -114,8 +115,8 @@
 </div>
 <!-- MENU-->
 <footer class="page-footer">
-	<div class="footer-copyright text-center">
-		<a style="text-decoration: none" href="javascript:void(0)">Calendario Hecho por <strong> <?php printf(YEAR_APLICACION); ?></strong> </a>
+	<div class="mifooter">
+		<a href="javascript:void(0)">Calendario Hecho con <span class="icon-heart"></span> <strong> <?php printf(YEAR_APLICACION); ?></strong> </a> - <a target="_blank" href="https://github.com/jcorpus"><span class="icon-github"></span></a>
 	</div>
 </footer>
 </div>
@@ -160,7 +161,7 @@
   				<div class="form-group row">
     			<label for="" class="col-sm-2 col-form-label">Descripcion:</label>
     				<div class="col-sm-9">
-      					<textarea class="form-control" placeholder="descripcion del evento" id="textdescription" rows="3"></textarea>
+      					<textarea class="form-control" maxlength="250" placeholder="descripcion del evento" id="textdescription" rows="3"></textarea>
     				</div>
   				</div>
   				<div class="form-check">
@@ -181,8 +182,8 @@
       					<input type="color" disabled="" style="height: 36px" class="form-control" id="txtcolor">
     				</div>
   				</div>
-  				<input type="text" hidden="" id="mimodalidad">
-  				<input type="text" hidden="" id="micolor">
+  				<input type="text"  id="mimodalidad">
+  				<input type="text"  id="micolor">
             </div>
         	</form>
         </div>
@@ -297,19 +298,17 @@
 						events:'http://localhost/webapps/calendario01/eventos.php',
 				
 			eventClick:function(calEvent,jsEvent,view){
-
+				cambiar_checkbox();
 				//mostrar botones
 				$("#btnmod").show();
 				$("#btndelete").show();
 				$("#btnadd").hide();
-
 				
 				$("#txtid").val(calEvent.id);
 				$("#textdescription").val(calEvent.description);
 				$("#txttitle").val(calEvent.title);
 				$("#tituloevento").html(calEvent.title);
 				$("#txtcolor").val(calEvent.color);
-
 				
 				$("#mimodalidad").val(calEvent.modalidad);
 				$("#micolor").val(calEvent.color);
