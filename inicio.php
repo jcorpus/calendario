@@ -182,8 +182,8 @@
       					<input type="color" disabled="" style="height: 36px" class="form-control" id="txtcolor">
     				</div>
   				</div>
-  				<input type="text"  id="mimodalidad">
-  				<input type="text"  id="micolor">
+  				<input type="text" hidden="" id="mimodalidad">
+  				<input type="text" hidden="" id="micolor">
             </div>
         	</form>
         </div>
@@ -295,7 +295,7 @@
 				}
 					$("#eventsModal").modal();
 				},
-						events:'http://localhost/webapps/calendario01/eventos.php',
+						events:'http://192.168.1.9/webapps/calendario01/eventos.php',
 				
 			eventClick:function(calEvent,jsEvent,view){
 				cambiar_checkbox();
@@ -372,9 +372,16 @@
 		$("#btnadd").click(function(){
 			recolectardatosGUI();
 			
+			/*
+ var n2 = /^\s/; //forma n° 2
+    var respt = n2.test(cadena);
+			*/
+			var expresion_r = /^\s/;
 			var jtxttitle = $("#txttitle").val();
-			if(jtxttitle == ""){
-				alert("Falta un Titulo");
+			jtxttitle = jtxttitle.trim();
+			if(!expresion_r.test(jtxttitle) && jtxttitle.length == 0){
+				
+				alert("Falta un Titulo o hay espacio en blanco al inicio");
 			}else{
 				enviarinformation('agregar',nuevoEvent);
 			}
