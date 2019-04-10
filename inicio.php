@@ -94,17 +94,22 @@
 			        </a>
 			    </div>
 			    <div class="colores">
-			    	<div class="Presencial">
-			    		<span>Presencial<div class="cpresencial">#1d5ee9</div></span>
-			    		
-			    	</div>
-			    	<div class="virtual">
-			    		<div>Virtual<div class="cvirtual">#c22e28</div></div>
-			    		
-			    	</div>
-			    	<div class="auditorio">
-			    		<div>Auditorio <div class="cauditorio">#0aaf33</div></div>
-			    	</div>
+					<table>
+						<tr>
+							<td class="ctitulo">Presencial</td>
+							<td class="cpresencial cuadro">#1d5ee9</td>
+						</tr>
+						<tr>
+							<td class="ctitulo">Virtual</td>
+							<td class="cvirtual cuadro">#c22e28</td>
+						</tr>
+						<tr>
+							<td class="ctitulo">Auditorio</td>
+							<td class="cauditorio cuadro">#0aaf33</td>
+						</tr>
+					</table>
+					<br>
+					<button id="mtituto" type="button" class="btn btn-outline-dark">Mostrar Evento Completo</button>
 			    </div>      
 		</div>
 	</div>
@@ -199,6 +204,15 @@
 </div>
 <script>
 			$(document).ready(function(){
+			///MOSTRAR TITULO COMPLETO DEL EVENTO
+			/*
+			$("#mtituto").click(function(){
+   				var estilos = {"white-space": 'normal'};
+   				$(".fc-month-view span.fc-title").css(estilos);
+			});
+
+			*/
+
 			$("input:checkbox").on('click', function() {
 			  var $box = $(this);
 			  if ($box.is(":checked")) {
@@ -246,9 +260,6 @@
 
 				});
 			}
-
-
-
 
 
 

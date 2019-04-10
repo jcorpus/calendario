@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2019 a las 05:28:27
+-- Tiempo de generación: 10-04-2019 a las 20:05:32
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -44,21 +44,12 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id`, `title`, `description`, `color`, `textColor`, `start`, `end`, `modalidad`) VALUES
-(132, 'prestamo verde', '', '#0aaf33', '#fff', '2019-03-09 09:00:00', '2019-03-09 09:00:00', 'auditorio'),
-(135, 'alv azil', '', '#1d5ee9', '#fff', '2019-03-09 09:00:00', '2019-03-09 09:00:00', 'presencial'),
-(136, 'rojoooo', 'dffklgd', '#c22e28', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'virtual'),
-(137, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#c22e28', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'virtual'),
-(138, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#1d5ee9', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'presencial'),
-(139, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#0aaf33', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'auditorio'),
-(140, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#1d5ee9', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'presencial'),
-(141, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#1d5ee9', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'presencial'),
-(142, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#1d5ee9', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'presencial'),
-(143, 'VALORIZACIÓN Y LIQUIDACION DE OBRAS CON LA NUEVA LEY DE CONTRATACIONES DEL ESTADO Y SU REGLAMENTO DS 30225 y SUS MODIFICACIONES BLASD', '', '#1d5ee9', '#fff', '2019-03-10 09:00:00', '2019-03-10 09:00:00', 'presencial'),
-(144, 'fdgdfgdfg', '', '#1d5ee9', '#fff', '2019-02-27 09:00:00', '2019-02-27 09:00:00', 'presencial'),
-(145, 'jojojo', '', '#c22e28', '#fff', '2019-03-09 09:00:00', '2019-03-09 09:00:00', 'virtual'),
-(146, 'codigo', '', '#0aaf33', '#fff', '2019-02-25 09:00:00', '2019-02-25 09:00:00', 'auditorio'),
-(147, 'ella no te ama prro', '', '#c22e28', '#fff', '2019-03-01 09:00:00', '2019-03-01 09:00:00', 'virtual'),
-(148, 'verde', '', '#0aaf33', '#fff', '2019-03-06 09:00:00', '2019-03-06 09:00:00', 'auditorio');
+(169, 'nueva ley', '', '#0aaf33', '#fff', '2019-04-18 09:00:00', '2019-04-18 09:00:00', 'auditorio'),
+(170, 'evento presencial prro', '', '#1d5ee9', '#fff', '2019-04-10 09:00:00', '2019-04-10 09:00:00', 'presencial'),
+(171, '                jj', '', '#c22e28', '#fff', '2019-04-10 09:00:00', '2019-04-10 09:00:00', 'virtual'),
+(174, 'dfjkfdkjdf', '', '#1d5ee9', '#fff', '2019-04-10 09:00:00', '2019-04-10 09:00:00', 'presencial'),
+(179, 'DERECHO PENAL - MODULO I:Derecho Penal – Parte General: Teoría del Delito (CLASE 1) HORA: 9am A 1pm', '', '#1d5ee9', '#fff', '2019-04-13 09:00:00', '2019-04-13 09:00:00', 'presencial'),
+(180, 'DERECHO PENAL - MODULO I:Derecho Penal – Parte General: Teoría del Delito (CLASE 2) HORA: 9am A 1pm', '', '#1d5ee9', '#fff', '2019-04-27 09:00:00', '2019-04-27 09:00:00', 'presencial');
 
 -- --------------------------------------------------------
 
@@ -97,7 +88,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
