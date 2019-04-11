@@ -109,7 +109,7 @@
 						</tr>
 					</table>
 					<br>
-					<button id="mtituto" type="button" class="btn btn-outline-dark">Mostrar Evento Completo</button>
+					
 			    </div>      
 		</div>
 	</div>
@@ -142,7 +142,7 @@
         	<form action="" onkeypress="return agregar_evento(event);">
         	<div class="form-group">
         		<div class="form-group row">
-    			<label for="" class="col-sm-2 col-form-label">Fecha:</label>
+    				<label for="" class="col-sm-2 col-form-label">Fecha:</label>
     				<div class="col-sm-5">
       					<input type="date" disabled="" class="form-control" id="txtdate" placeholder="">
     				</div>
@@ -158,9 +158,13 @@
     				</div>
   				</div>
   				<div class="form-group row">
-    			<label for="" class="col-sm-2 col-form-label">Hora:</label>
-    				<div class="col-sm-5">
-      					<input type="input" id="txttime" class="form-control" value="9:00"  placeholder="">
+    				<label for="" class="col-sm-2 col-form-label">Inicio:</label>
+    				<div class="col-sm-4">
+      					<input type="time" id="txttime" class="form-control" value="09:00"  placeholder="">
+    				</div>
+    				<label for="" class="col-sm-1 col-form-label">Fin:</label>
+    				<div class="col-sm-4">
+      					<input type="time" id="txttimefin" class="form-control" value="19:00"  placeholder="">
     				</div>
   				</div>
   				<div class="form-group row">
@@ -269,6 +273,8 @@
 				$("#tituloevento").val('');
 				$("#txtcolor").val('');
 				$("#textdescription").val('');
+				$("#txttime").val('');
+				$("#txttimefin").val('');
 				$(".metodo").prop('checked',false);
 
 			}
@@ -290,6 +296,8 @@
 				dayClick: function(date, jsEvent, view){
 					clear_dayclick();
 					cambiar_checkbox();
+					$("#txttime").val("09:00");
+					$("#txttimefin").val("19:00");
 					//eliminar boton modificar cuando agregas
 					$("#btnadd").show();
 					$("#btnmod").hide();
@@ -328,6 +336,12 @@
 				$("#txtdate").val(FechaHora[0]);
 				$("#txttime").val(FechaHora[1]);
 				//alert("el evento que traigo es: "+calEvent.modalidad);
+				//evento fin
+				FechaHora2 = calEvent.end._i.split(" ");
+				$("#txttimefin").val(FechaHora2[1]);
+
+
+
 				var jmodalidad = calEvent.modalidad;
 				switch(jmodalidad){
 					case "presencial":
@@ -370,6 +384,9 @@
 				var DateTime = calEvent.start.format().split("T");
 				$("#txtdate").val(DateTime[0]);
 				$("#txttime").val(DateTime[1]);
+				//evento fecha de fin
+				var DateTime2 = calEvent.end.format().split("T");
+				$("#txttimefin").val(DateTime2[1]);
 
 				recolectardatosGUI();
 				enviarinformation('modificar',nuevoEvent,true);
@@ -378,6 +395,25 @@
 
 			});
 		});
+
+
+/*EVENTO ENTER*/
+
+function agregar_evento(e){
+	if (e.keyCode == 13){
+		recolectardatosGUI();
+		var expresion_r = /^\s/;
+			var jtxttitle = $("#txttitle").val();
+			jtxttitle = jtxttitle.trim();
+			if(!expresion_r.test(jtxttitle) && jtxttitle.length == 0){
+				
+				alert("Falta un Título o hay espacio en blanco al inicio del TÍTULO");
+			}else{
+				enviarinformation('agregar',nuevoEvent);
+			}
+			
+	}
+}
 
 	var nuevoEvent;
 		$("#btnadd").click(function(){
@@ -392,7 +428,7 @@
 			jtxttitle = jtxttitle.trim();
 			if(!expresion_r.test(jtxttitle) && jtxttitle.length == 0){
 				
-				alert("Falta un Titulo o hay espacio en blanco al inicio");
+				alert("Falta un Título o hay espacio en blanco al inicio del TÍTULO");
 			}else{
 				enviarinformation('agregar',nuevoEvent);
 			}
@@ -420,7 +456,7 @@
 			color:$("#micolor").val(),
 			description:$("#textdescription").val(),
 			textColor:"#fff",
-			end:$("#txtdate").val()+" "+$("#txttime").val(),
+			end:$("#txtdate").val()+" "+$("#txttimefin").val(),
 			modalidad:$("#mimodalidad").val()
 
 		};
