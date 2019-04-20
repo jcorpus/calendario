@@ -129,7 +129,7 @@
 
 <!-- MODAL 2 -->
 <div class="modal fade" id="eventsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h7 class="modal-title" id="tituloevento"></h7>
@@ -142,13 +142,13 @@
         	<form action="" onkeypress="return agregar_evento(event);">
         	<div class="form-group">
         		<div class="form-group row">
-    				<label for="" class="col-sm-2 col-form-label">Fecha:</label>
-    				<div class="col-sm-5">
-      					<input type="date" disabled="" class="form-control" id="txtdate" placeholder="">
+    				<label for="" class="col-sm-1 col-form-label">Fecha:</label>
+    				<div class="col-sm-3">
+      					<input type="date" disabled="" class="form-control form-control-sm" id="txtdate" placeholder="">
     				</div>
-    				<label for="" class="col-sm-1 col-form-label">ID:</label>
+    				<label for="" class="col-sm-1 col-form-label col-form-label-sm">ID:</label>
     				<div class="col-sm-2">
-      					<input type="input" disabled="" class="form-control" id="txtid" name="txtid" placeholder="">
+      					<input type="input" disabled="" class="form-control form-control-sm" id="txtid" name="txtid" placeholder="">
     				</div>
   				</div>
   				<div class="form-group row">
@@ -158,13 +158,13 @@
     				</div>
   				</div>
   				<div class="form-group row">
-    				<label for="" class="col-sm-2 col-form-label">Inicio:</label>
-    				<div class="col-sm-4">
-      					<input type="time" id="txttime" class="form-control" value="09:00"  placeholder="">
+    				<label for="" class="col-sm-1 col-form-label">Inicio:</label>
+    				<div class="col-sm-3">
+      					<input type="time" id="txttime" class="form-control form-control-sm" value="09:00"  placeholder="">
     				</div>
     				<label for="" class="col-sm-1 col-form-label">Fin:</label>
-    				<div class="col-sm-4">
-      					<input type="time" id="txttimefin" class="form-control" value="19:00"  placeholder="">
+    				<div class="col-sm-3">
+      					<input type="time" id="txttimefin" class="form-control form-control-sm" value="19:00"  placeholder="">
     				</div>
   				</div>
   				<div class="form-group row">
@@ -173,17 +173,28 @@
       					<textarea class="form-control" maxlength="250" placeholder="descripcion del evento" id="textdescription" rows="3"></textarea>
     				</div>
   				</div>
+  				<div class="form-group row">
+    			<label for="" class="col-sm-2 col-form-label">Modalidad:</label>
+    				<div class="col-sm-4">
+      					<select name="" id="" class="form-control">
+      						<option value="">Presencial</option>
+      						<option value="">Virtual</option>
+      						<option value="">Auditorio</option>
+      					</select>
+    				</div>
+  				</div>
+  				<div class="errortipo"></div>
   				<div class="form-check">
     				<input type="checkbox" name="type"  class="form-check-input metodo" value="presencial" id="presencial">
-    				<label class="form-check-label" for="exampleCheck2">Presencial</label>
+    				<label class="form-check-label" for="presencial">Presencial</label>
 				</div>
 				<div class="form-check">
     				<input type="checkbox" name="type"  class="form-check-input metodo" value="virtual" id="virtual">
-    				<label class="form-check-label" for="exampleCheck1">Virtual</label>
+    				<label class="form-check-label" for="virtual">Virtual</label>
 				</div>
 				<div class="form-check">
     				<input type="checkbox" name="type"  class="form-check-input metodo" value="auditorio" id="auditorio">
-    				<label class="form-check-label" for="exampleCheck3">Auditorio</label>
+    				<label class="form-check-label" for="auditorio">Auditorio</label>
 				</div>
   				<div class="form-group row">
     			<label for="" class="col-sm-2 col-form-label">Color:</label>
@@ -243,6 +254,11 @@
 				$("#micolor").val('#1d5ee9');
 				$(".metodo").change(function(){
 					var valor_checkbox2 = valor_checkbox();
+					if(!valor_checkbox2){
+					alert("falta una modalidad");
+					/*$(".errortipo").html("<div class='alert alert-danger' role='alert'>Debes seleccionar un Tipo de Evento</div>");*/
+					}else{
+					//$(".errortipo").hide();
 					$("#mimodalidad").val(valor_checkbox2);
 					//$("#mimodalidad").val(calEvent.modalidad);
 				    //$("#micolor").val(calEvent.color);
@@ -261,6 +277,8 @@
 					$("#micolor").val("#0aaf33");
 					break;
 				}
+					}
+					
 
 				});
 			}
@@ -308,7 +326,7 @@
 					$("#txtdate").val(date.format());
 				var comprobar = $("#tituloevento").val();
 				if(comprobar == ""){
-					$("#tituloevento").html("Nuevo Evento");
+					$("#tituloevento").html("<span class='icon-bookmark'></span>"+" Nuevo Evento");
 				}else{
 					alert("si hay evento: "+jsEvent.title);
 				}
@@ -363,7 +381,7 @@
 					$("#auditorio").prop("checked", true);
 					break;
 					default:
-					alert("no hay por defecto xD");
+					alert("No hay Modalidad en el evento");
 				}
 
 				$("#eventsModal").modal();
@@ -399,39 +417,64 @@
 
 /*EVENTO ENTER*/
 
+
+var nuevoEvent;
+function validar_titulo(){
+	var validar_titulo = false;
+	var expresion_r = /^\s/;
+			var jtxttitle = $("#txttitle").val();
+			jtxttitle = jtxttitle.trim();
+			if(!expresion_r.test(jtxttitle) && jtxttitle.length == 0){
+				validar_titulo = false;
+				alert("Falta un Título o hay espacio en blanco al inicio del TÍTULO");
+			}else{
+				validar_titulo = true;
+			}
+			return validar_titulo;
+}
+
+function validar_hora(){
+	var valor_hora = false;
+	var comprobar_hora_inicio = $("#txttime").val();
+	var comprobar_hora_fin = $("#txttimefin").val();
+	if(comprobar_hora_inicio < comprobar_hora_fin){
+		//alert("correcto");
+		valor_hora =  true;
+	}else{
+		alert("La hora de INICIO no debe ser menor o igual a la hora de FIN");
+		valor_hora = false;
+	}
+	return valor_hora;
+
+
+}
+
 function agregar_evento(e){
 	if (e.keyCode == 13){
 		recolectardatosGUI();
-		var expresion_r = /^\s/;
-			var jtxttitle = $("#txttitle").val();
-			jtxttitle = jtxttitle.trim();
-			if(!expresion_r.test(jtxttitle) && jtxttitle.length == 0){
-				
-				alert("Falta un Título o hay espacio en blanco al inicio del TÍTULO");
-			}else{
-				enviarinformation('agregar',nuevoEvent);
-			}
-			
+		
+		if(validar_titulo() && validar_hora()){
+			enviarinformation('agregar',nuevoEvent);
+		}else{
+			alert("Corregir los ERRORES");
+		}
+		
 	}
 }
 
-	var nuevoEvent;
+
+
+
+	
 		$("#btnadd").click(function(){
 			recolectardatosGUI();
+			if(validar_titulo() && validar_hora()){
+			enviarinformation('agregar',nuevoEvent);
+		}else{
+			alert("Corregir los ERRORES");
+		}
 			
-			/*
- var n2 = /^\s/; //forma n° 2
-    var respt = n2.test(cadena);
-			*/
-			var expresion_r = /^\s/;
-			var jtxttitle = $("#txttitle").val();
-			jtxttitle = jtxttitle.trim();
-			if(!expresion_r.test(jtxttitle) && jtxttitle.length == 0){
-				
-				alert("Falta un Título o hay espacio en blanco al inicio del TÍTULO");
-			}else{
-				enviarinformation('agregar',nuevoEvent);
-			}
+			
 	});
 
 		$("#btndelete").click(function(){
@@ -442,8 +485,11 @@ function agregar_evento(e){
 
 		$("#btnmod").click(function(){
 			recolectardatosGUI();
+			if(validar_titulo() && validar_hora()){
 			enviarinformation('modificar',nuevoEvent);
-		//$('#calendarioweb').fullCalendar('renderEvent', nuevoEvent);
+		}else{
+			alert("Corregir los ERRORES");
+		}
 	});
 
 
