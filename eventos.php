@@ -18,16 +18,17 @@ $accion = (isset($_GET['accion']))?$_GET['accion']:'leer';
 switch ($accion) {
 	case 'agregar':
 		# code...
-	$sentenciaSQL = $pdo->prepare("INSERT INTO eventos(title,description,color,textColor,start,end,modalidad)
-		VALUES(:title,:description,:color,:textColor,:start,:end,:modalidad)");
+	$sentenciaSQL = $pdo->prepare("INSERT INTO eventos(title,description,color,textColor,start,end,modalidad,ponente)
+		VALUES(:title,:description,:color,:textColor,:start,:end,:modalidad,:ponente)");
 	$respuesta = $sentenciaSQL->execute(array(
-		"title" => $_POST['title'],
+		"title" => strip_tags($_POST['title']),
 		"description" =>$_POST['description'],
 		"color" => $_POST['color'],
 		"textColor" => $_POST['textColor'],
 		"start" =>$_POST['start'],
 		"end" => $_POST['end'],
-		"modalidad"=> $_POST['modalidad']
+		"modalidad"=> $_POST['modalidad'],
+		"ponente" => ucwords($_POST['ponente'])
 	));
 	echo json_encode($respuesta);
 
@@ -40,19 +41,21 @@ switch ($accion) {
 			textColor=:textColor,
 			start=:start,
 			end =:end,
-			modalidad=:modalidad
+			modalidad=:modalidad,
+			ponente=:ponente
 			WHERE ID=:ID
 
 		");
 		$respuesta = $sentenciaSQL->execute(array(
 		"ID" =>$_POST['id'],
-		"title" => $_POST['title'],
+		"title" => strip_tags($_POST['title']),
 		"description" =>$_POST['description'],
 		"color" => $_POST['color'],
 		"textColor" => $_POST['textColor'],
 		"start" =>$_POST['start'],
 		"end" => $_POST['end'],
-		"modalidad"=> $_POST['modalidad']
+		"modalidad"=> $_POST['modalidad'],
+		"ponente"=> ucwords($_POST['ponente'])
 	));
 		echo json_encode($respuesta);
 		break;

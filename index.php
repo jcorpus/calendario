@@ -141,69 +141,58 @@
         <div id="descriptionEvent">
         	<form action="" onkeypress="return agregar_evento(event);">
         	<div class="form-group">
-        		<div class="form-group row">
-    				<label for="" class="col-sm-1 col-form-label">Fecha:</label>
-    				<div class="col-sm-3">
-      					<input type="date" disabled="" class="form-control form-control-sm" id="txtdate" placeholder="">
+        		<div class="form-row">
+        			<div class="col-md-3 mb-3">
+      					<label for="" class="col-form-label-sm">Fecha: <span class="icon-calendar"></span></label>
+      					<input type="date" disabled="" class="form-control form-control-sm" id="txtdate">
+    				</div> 
+    				<div class="col-md-2 mb-3">
+      					<label for="" class="col-form-label-sm">ID:</label>
+      					<input type="input" disabled="" class="form-control form-control-sm" id="txtid">
     				</div>
-    				<label for="" class="col-sm-1 col-form-label col-form-label-sm">ID:</label>
-    				<div class="col-sm-2">
-      					<input type="input" disabled="" class="form-control form-control-sm" id="txtid" name="txtid" placeholder="">
+    				<div class="col-md-2 mb-3">
+      					<label for="" class="col-form-label-sm">Inicio: <span class="icon-clock"></span></label>
+      					<input type="time"  class="form-control form-control-sm" value="09:00" id="txttime">
     				</div>
-  				</div>
+    				<div class="col-md-2 mb-3">
+      					<label for="" class="col-form-label-sm">Fin: <span class="icon-clock"></span></label>
+      					<input type="time"  class="form-control form-control-sm" value="19:00" id="txttimefin">
+    				</div>
+        		</div>
   				<div class="form-group row">
     			<label for="" class="col-sm-2 col-form-label">Titulo:</label>
     				<div class="col-sm-9">
-      					<input type="input" class="form-control enfocus" id="txttitle" placeholder="Titulo del evento">
-    				</div>
-  				</div>
-  				<div class="form-group row">
-    				<label for="" class="col-sm-1 col-form-label">Inicio:</label>
-    				<div class="col-sm-3">
-      					<input type="time" id="txttime" class="form-control form-control-sm" value="09:00"  placeholder="">
-    				</div>
-    				<label for="" class="col-sm-1 col-form-label">Fin:</label>
-    				<div class="col-sm-3">
-      					<input type="time" id="txttimefin" class="form-control form-control-sm" value="19:00"  placeholder="">
+      					<input type="text" class="form-control enfocus form-control-sm" id="txttitle" placeholder="Titulo del evento">
     				</div>
   				</div>
   				<div class="form-group row">
     			<label for="" class="col-sm-2 col-form-label">Descripcion:</label>
     				<div class="col-sm-9">
-      					<textarea class="form-control" maxlength="250" placeholder="descripcion del evento" id="textdescription" rows="3"></textarea>
+      					<textarea class="form-control" maxlength="250" placeholder="descripcion del evento" id="textdescription" rows="2"></textarea>
     				</div>
   				</div>
   				<div class="form-group row">
     			<label for="" class="col-sm-2 col-form-label">Modalidad:</label>
     				<div class="col-sm-4">
-      					<select name="" id="" class="form-control">
-      						<option value="">Presencial</option>
-      						<option value="">Virtual</option>
-      						<option value="">Auditorio</option>
+      					<select id="modalidad_evento" class="form-control metodo">
+      						<option selected="presencial" value="presencial">Presencial</option>
+      						<option value="virtual">Virtual</option>
+      						<option value="auditorio">Auditorio</option>
       					</select>
     				</div>
-  				</div>
-  				<div class="errortipo"></div>
-  				<div class="form-check">
-    				<input type="checkbox" name="type"  class="form-check-input metodo" value="presencial" id="presencial">
-    				<label class="form-check-label" for="presencial">Presencial</label>
-				</div>
-				<div class="form-check">
-    				<input type="checkbox" name="type"  class="form-check-input metodo" value="virtual" id="virtual">
-    				<label class="form-check-label" for="virtual">Virtual</label>
-				</div>
-				<div class="form-check">
-    				<input type="checkbox" name="type"  class="form-check-input metodo" value="auditorio" id="auditorio">
-    				<label class="form-check-label" for="auditorio">Auditorio</label>
-				</div>
-  				<div class="form-group row">
-    			<label for="" class="col-sm-2 col-form-label">Color:</label>
-    				<div class="col-sm-4">
+    			<label for="" class="col-sm-1 col-form-label">Color:</label>
+    				<div class="col-sm-3">
       					<input type="color" disabled="" style="height: 36px" class="form-control" id="txtcolor">
     				</div>
   				</div>
-  				<input type="text" hidden="" id="mimodalidad">
-  				<input type="text" hidden="" id="micolor">
+  				<div class="form-group row">
+    			<label for="" class="col-sm-2 col-form-label">Ponente: <span class="icon-user-tie" style="font-size: 17px"></span></label>
+    				<div class="col-sm-6">
+      					<input type="text" maxlength="40" class="form-control enfocus form-control-sm" id="txtponente" placeholder="Nombre Ponente">
+    				</div>
+  				</div>
+  				<input type="text" hidden=""  id="mimodalidad">
+  				<input type="text" hidden=""  id="micolor">
             </div>
         	</form>
         </div>
@@ -219,67 +208,38 @@
 </div>
 <script>
 			$(document).ready(function(){
+				
 			///MOSTRAR TITULO COMPLETO DEL EVENTO
 			/*
 			$("#mtituto").click(function(){
    				var estilos = {"white-space": 'normal'};
    				$(".fc-month-view span.fc-title").css(estilos);
 			});
-
 			*/
 
-			$("input:checkbox").on('click', function() {
-			  var $box = $(this);
-			  if ($box.is(":checked")) {
-			    var group = "input:checkbox[name='" + $box.attr("name") + "']";
-			    $(group).prop("checked", false);
-			    $box.prop("checked", true);
-			  } else {
-			    $box.prop("checked", false);
-			  }
-			});
-			///check box
-			function valor_checkbox(){
-				var valor_checkbox, cmodalidad;
-			$(".metodo:checked").each(function(){
-				valor_checkbox = $(this).val();
-			});
-			return valor_checkbox;
-			}
-
-			function cambiar_checkbox(){
+			function cambiar_select(){
+				$("#micolor").val("#1d5ee9");
+				$("#txtcolor").val("#1d5ee9");
 				$("#mimodalidad").val("presencial");
-				$("#presencial").prop("checked",true);
-				$("#txtcolor").val('#1d5ee9');
-				$("#micolor").val('#1d5ee9');
 				$(".metodo").change(function(){
-					var valor_checkbox2 = valor_checkbox();
-					if(!valor_checkbox2){
-					alert("falta una modalidad");
-					/*$(".errortipo").html("<div class='alert alert-danger' role='alert'>Debes seleccionar un Tipo de Evento</div>");*/
-					}else{
-					//$(".errortipo").hide();
-					$("#mimodalidad").val(valor_checkbox2);
-					//$("#mimodalidad").val(calEvent.modalidad);
-				    //$("#micolor").val(calEvent.color);
-				   //alert("el valor que trae es: "+ valor_checkbox2);
+					var valor_checkbox2 = $("#modalidad_evento").val();
 				   switch(valor_checkbox2){
 					case "presencial":
+					$("#mimodalidad").val("presencial");
 					$("#txtcolor").val("#1d5ee9");
 					$("#micolor").val("#1d5ee9");
 					break;
 					case "virtual":
+					$("#mimodalidad").val("virtual");
 					$("#txtcolor").val("#c22e28");
 					$("#micolor").val("#c22e28");
 					break;
 					case "auditorio":
+					$("#mimodalidad").val("auditorio");
 					$("#txtcolor").val("#0aaf33");
 					$("#micolor").val("#0aaf33");
 					break;
-				}
 					}
-					
-
 				});
 			}
 
@@ -293,7 +253,7 @@
 				$("#textdescription").val('');
 				$("#txttime").val('');
 				$("#txttimefin").val('');
-				$(".metodo").prop('checked',false);
+				$("#txtponente").val('');
 
 			}
 
@@ -313,13 +273,14 @@
 				},
 				dayClick: function(date, jsEvent, view){
 					clear_dayclick();
-					cambiar_checkbox();
+					cambiar_select();
 					$("#txttime").val("09:00");
 					$("#txttimefin").val("19:00");
 					//eliminar boton modificar cuando agregas
 					$("#btnadd").show();
 					$("#btnmod").hide();
 					$("#btndelete").hide();
+					//$("txttitle").focus();
 					//alert("valor seleccionado: "+date.format());
 					//alert("vista actual: "+view.name);
 					//$(this).css('background-color','#2C906A');
@@ -335,7 +296,8 @@
 						events:'http://192.168.1.9/webapps/calendario01/eventos.php',
 				
 			eventClick:function(calEvent,jsEvent,view){
-				cambiar_checkbox();
+				cambiar_select();
+
 				//mostrar botones
 				$("#btnmod").show();
 				$("#btndelete").show();
@@ -349,6 +311,7 @@
 				
 				$("#mimodalidad").val(calEvent.modalidad);
 				$("#micolor").val(calEvent.color);
+				$("#txtponente").val(calEvent.ponente);
 
 				FechaHora = calEvent.start._i.split(" ");
 				$("#txtdate").val(FechaHora[0]);
@@ -361,24 +324,16 @@
 
 
 				var jmodalidad = calEvent.modalidad;
+				//alert("la modalidad es: "+calEvent.modalidad);
 				switch(jmodalidad){
 					case "presencial":
-					//$("#mimodalidad").val("presencial");
-					$("#presencial").prop("checked", true);
-					$("#virtual").prop("checked", false);
-					$("#auditorio").prop("checked", false);
+					$("#modalidad_evento").val("presencial");
 					break;
 					case "virtual":
-					//$("#mimodalidad").val("virtual");
-					$("#presencial").prop("checked", false);
-					$("#virtual").prop("checked", true);
-					$("#auditorio").prop("checked", false);
+					$("#modalidad_evento").val("virtual");
 					break;
 					case "auditorio":
-					//$("#mimodalidad").val("auditorio");
-					$("#presencial").prop("checked", false);
-					$("#virtual").prop("checked", false);
-					$("#auditorio").prop("checked", true);
+					$("#modalidad_evento").val("auditorio");
 					break;
 					default:
 					alert("No hay Modalidad en el evento");
@@ -393,6 +348,7 @@
 				$("#txttitle").val(calEvent.title);
 				$("#txtcolor").val(calEvent.color);
 				$("#textdescription").val(calEvent.description);
+				$("#txtponente").val(calEvent.ponente);
 				//alert("la modalidad que mando es: "+calEvent.color);
 
 				///////TIPO DE EVENTO
@@ -449,6 +405,7 @@ function validar_hora(){
 
 }
 
+/*
 function agregar_evento(e){
 	if (e.keyCode == 13){
 		recolectardatosGUI();
@@ -461,9 +418,7 @@ function agregar_evento(e){
 		
 	}
 }
-
-
-
+*/
 
 	
 		$("#btnadd").click(function(){
@@ -501,6 +456,7 @@ function agregar_evento(e){
 			//color:cmodalidad,
 			color:$("#micolor").val(),
 			description:$("#textdescription").val(),
+			ponente:$("#txtponente").val(),
 			textColor:"#fff",
 			end:$("#txtdate").val()+" "+$("#txttimefin").val(),
 			modalidad:$("#mimodalidad").val()
