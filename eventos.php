@@ -21,8 +21,8 @@ switch ($accion) {
 	$sentenciaSQL = $pdo->prepare("INSERT INTO eventos(title,description,color,textColor,start,end,modalidad,ponente)
 		VALUES(:title,:description,:color,:textColor,:start,:end,:modalidad,:ponente)");
 	$respuesta = $sentenciaSQL->execute(array(
-		"title" => strip_tags($_POST['title']),
-		"description" =>$_POST['description'],
+		"title" => strip_tags(strtoupper($_POST['title'])),
+		"description" =>strip_tags($_POST['description']),
 		"color" => $_POST['color'],
 		"textColor" => $_POST['textColor'],
 		"start" =>$_POST['start'],
@@ -48,8 +48,8 @@ switch ($accion) {
 		");
 		$respuesta = $sentenciaSQL->execute(array(
 		"ID" =>$_POST['id'],
-		"title" => strip_tags($_POST['title']),
-		"description" =>$_POST['description'],
+		"title" => strip_tags(strtoupper($_POST['title'])),
+		"description" =>strip_tags($_POST['description']),
 		"color" => $_POST['color'],
 		"textColor" => $_POST['textColor'],
 		"start" =>$_POST['start'],

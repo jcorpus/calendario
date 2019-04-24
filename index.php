@@ -132,7 +132,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h7 class="modal-title" id="tituloevento"></h7>
+        <h7 class="modal-title" style="font-weight: bold; font-size: 13px" id="tituloevento"></h7>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -160,7 +160,7 @@
     				</div>
         		</div>
   				<div class="form-group row">
-    			<label for="" class="col-sm-2 col-form-label">Titulo:</label>
+    			<label for="" class="col-sm-2 col-form-label">Titulo: <span class="icon-clipboard"></span></label>
     				<div class="col-sm-9">
       					<input type="text" class="form-control enfocus form-control-sm" id="txttitle" placeholder="Titulo del evento">
     				</div>
@@ -191,6 +191,15 @@
       					<input type="text" maxlength="40" class="form-control enfocus form-control-sm" id="txtponente" placeholder="Nombre Ponente">
     				</div>
   				</div>
+  				<div class="form-group row">
+    			<label for="" class="col-sm-3 col-form-label-sm">Ficha de Orientación: <span class="icon-file-text2"></span></label>
+    				<div class="col-sm-3">
+      					<input class="form-check-input" type="checkbox" value="" id="activar_ficha">
+  						<label class="form-check-label" for="activar_ficha">
+  						  Activar
+  						</label>
+    				</div>
+  				</div>
   				<input type="text" hidden=""  id="mimodalidad">
   				<input type="text" hidden=""  id="micolor">
             </div>
@@ -198,9 +207,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btnadd" class="btn btn-outline-success">Agregar</button>
-        <button type="button" id="btnmod" class="btn btn-outline-primary">Modificar</button>
-        <button type="button" id="btndelete" class="btn btn-outline-danger">Borrar</button>
+        <button type="button" id="btnadd" class="btn btn-outline-success">Agregar <span class="icon-checkmark"></span></button>
+        <button type="button" id="btnmod" class="btn btn-outline-primary">Modificar <span class="icon-checkmark"></span></button>
+        <button type="button" id="btndelete" class="btn btn-outline-danger">Borrar <span class="icon-cross"></span></button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>

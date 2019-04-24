@@ -25,6 +25,7 @@
 <body>
 	
 	<div class="container">
+		<div class="col-md-12">
 	<form>
   <div class="form-row">
     <div class="col-md-4 mb-3">
@@ -145,22 +146,22 @@
   <thead>
     <tr>
       <th scope="col" ></th>
-      <th scope="col" style="width: 10px">Hora Salida</th>
-      <th scope="col" style="width: 10px">Hora Llegada</th>
-      <th scope="col" style="width: 10px">Fecha Salida</th>
-      <th scope="col" style="width: 10px">Fecha Llegada</th>
+      <th scope="col" style="width: 4px; font-size: 14px">Hora Salida</th>
+      <th scope="col" style="width: 4px; font-size: 14px">Hora Llegada</th>
+      <th scope="col" style="width: 4px; font-size: 14px">Fecha Salida</th>
+      <th scope="col" style="width: 4px; font-size: 14px">Fecha Llegada</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Retorno</th>
+      <th scope="row" style="font-size: 14px">Retorno</th>
       <td><input type="time" class="form-control form-control-sm"></td>
       <td><input type="time" class="form-control form-control-sm"></td>
       <td><input type="date" class="form-control form-control-sm"></td>
       <td><input type="date" class="form-control form-control-sm"></td>
     </tr>
     <tr>
-      <th scope="row">Salida</th>
+      <th scope="row" style="font-size: 14px">Salida</th>
       <td><input type="time" class="form-control form-control-sm"></td>
       <td><input type="time" class="form-control form-control-sm"></td>
       <td><input type="date" class="form-control form-control-sm"></td>
@@ -172,9 +173,113 @@
     </div>
     </fieldset>
   </div>
+  <div class="bordee">
+  	  	<fieldset>
+  		<legend><h6>III. MATERIALES DIDÁCTICOS Y EQUIPOS DE APOYO:</h6></legend>
+    <div class="form-row">
+    	
+    <div class="col-md-2 ">
+      <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Multimedia
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Pizarra Acrílica
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Puntero Láser
+  </label>
+</div>
+    </div>
+        <div class="col-md-2 ">
+      <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    DVD
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Papel Bond
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Plumones
+  </label>
+</div>
+    </div>
+        <div class="col-md-5 ">
+      <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Parlantes para proyección de audio
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Proyector Slide
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Equipo de Sonido (CD)
+  </label>
+</div>
+    </div>
+            <div class="col-md-3 ">
+      <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Papelografo
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Micrófono
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Laptop
+  </label>
+</div>
+    </div>
 
-  <button class="btn btn-primary" type="submit">Submit form</button>
+
+    </div>
+    </fieldset>
+  </div>
+        <div class="modal-footer">
+        <button type="button" id="" class="btn btn-outline-success">Agregar <span class="icon-checkmark"></span></button>
+        <button type="button" id="" class="btn btn-outline-danger">Borrar <span class="icon-cross"></span></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
 </form>
+</div>
+
 	</div>
 </body>
 </html>
+
+
+<?php 
+$hola = "<span>alv prro</span>";
+
+$hola = strip_tags(strtoupper($hola));
+
+echo $hola;
+ ?>

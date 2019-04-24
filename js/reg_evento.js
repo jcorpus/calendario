@@ -11,3 +11,13 @@ function go_event(){
 }
 
 */
+$(document).ready(function(){
+
+$("#activar_ficha").change(function(){
+
+	open('ficha_orientacion.php','',"width=1220,height=600,scrollbars=NO") ; 
+
+});
+});
+
+
