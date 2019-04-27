@@ -265,8 +265,7 @@
   </div>
         <div class="modal-footer">
         <button type="button" id="" class="btn btn-outline-success">Agregar <span class="icon-checkmark"></span></button>
-        <button type="button" id="" class="btn btn-outline-danger">Borrar <span class="icon-cross"></span></button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar <span class="icon-cross"></span></button>
       </div>
 </form>
 </div>
